@@ -5,7 +5,7 @@
 
     /**
      * Prepare an IBAN for mod 97 computation by moving the first 4 chars to the end and transforming the letters to
-     * numbers (A = 10, B = 11, ..., Z = 35).
+     * numbers (A = 10, B = 11, ..., Z = 35), as specified in ISO13616.
      *
      * @param {string} iban the IBAN
      * @returns {string} the prepared IBAN
@@ -25,6 +25,12 @@
         }).join('');
     }
 
+    /**
+     * Calculates the MOD 97 10 of the passed IBAN as specified in ISO7064.
+     *
+     * @param iban
+     * @returns {number}
+     */
     function iso7064Mod97_10(iban) {
         var remainder = iban,
             block;
@@ -37,6 +43,15 @@
         return parseInt(remainder, 10) % 97;
     }
 
+    /**
+     * Parse the BBAN structure used to configure each IBAN Specification and returns a matching regular expression.
+     * A structure is composed of blocks of 3 characters (one letter and 2 digits). Each block represents
+     * a logical group in the typical representation of the BBAN. For each group, the letter indicates which characters
+     * are allowed in this group and the following 2-digits number tells the length of the group.
+     *
+     * @param {string} structure the structure to parse
+     * @returns {RegExp}
+     */
     function parseStructure(structure){
         // split in blocks of 3 chars
         var regex = structure.match(/(.{3})/g).map(function(block){
@@ -121,14 +136,27 @@
      * @returns {string} the IBAN
      */
     Specification.prototype.fromBBAN = function(bban) {
-        if (this.length - 4 != bban.length){
-            throw new Error('Invalid BBAN length');
+        if (!this.isValidBBAN(bban)){
+            throw new Error('Invalid BBAN');
         }
 
         var remainder = iso7064Mod97_10(iso13616Prepare(this.countryCode + '00' + bban)),
             checkDigit = ('0' + (98 - remainder)).slice(-2);
 
         return this.countryCode + checkDigit + bban;
+    };
+
+    /**
+     * Check of the passed BBAN is valid.
+     * This function only checks the format of the BBAN (length and matching the letetr/number specs) but does not
+     * verify the check digit.
+     *
+     * @param bban the BBAN to validate
+     * @returns {boolean} true if the passed bban is a valid BBAN according to this specification, false otherwise
+     */
+    Specification.prototype.isValidBBAN = function(bban) {
+        return this.length - 4 == bban.length
+            && this.regex.test(bban);
     };
 
     var countries = {};
@@ -216,7 +244,8 @@
     };
 
     /**
-     * Convert
+     * Convert an IBAN to a BBAN.
+     *
      * @param iban
      * @param {String} [separator] the separator to use between the blocks of the BBAN, defaults to ' '
      * @returns {string|*}
@@ -234,10 +263,13 @@
     };
 
     /**
+     * Convert the passed BBAN to an IBAN for this country specification.
+     * Please note that <i>"generation of the IBAN shall be the exclusive responsibility of the bank/branch servicing the account"</i>.
+     * This method implements the preferred algorithm described in http://en.wikipedia.org/wiki/International_Bank_Account_Number#Generating_IBAN_check_digits
      *
-     * @param countryCode
-     * @param bban
-     * @returns {string|*}
+     * @param countryCode the country of the BBAN
+     * @param bban the BBAN to convert to IBAN
+     * @returns {string} the IBAN
      */
     exports.fromBBAN = function(countryCode, bban){
         var countryStructure = countries[countryCode];
@@ -245,6 +277,17 @@
             throw new Error('No country with code ' + countryCode);
         }
         return countryStructure.fromBBAN(this.electronicFormat(bban));
+    };
+
+    /**
+     * Check the validity of the passed BBAN.
+     *
+     * @param countryCode the country of the BBAN
+     * @param bban the BBAN to check the validity of
+     */
+    exports.isValidBBAN = function(countryCode, bban){
+        var countryStructure = countries[countryCode];
+        return countryStructure && countryStructure.isValidBBAN(this.electronicFormat(bban));
     };
 
     /**

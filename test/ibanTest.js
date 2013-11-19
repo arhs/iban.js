@@ -77,5 +77,30 @@ describe('IBAN', function(){
         it('should output the right IBAN from a Belgian BBAN, ignoring format', function(){
             expect(IBAN.fromBBAN('BE', '539-0075470-34')).to.equal('BE68539007547034');
         });
+
+        it('should throw an error if the BBAN is invalid', function(){
+            expect(function(){
+                IBAN.fromBBAN('BE', '1539-0075470-34');
+            }).to.throw(Error).and.throw(/Invalid BBAN/);
+        });
+    });
+
+    describe('.isValidBBAN', function(){
+
+        it('should validate a correct Belgian BBAN', function(){
+            expect(IBAN.isValidBBAN('BE', '539007547034')).to.be.true;
+        });
+
+        it('should validate a correct Belgian BBAN, ignoring format', function(){
+            expect(IBAN.isValidBBAN('BE', '539-0075470-34')).to.be.true;
+        });
+
+        it('should detect invalid BBAN length', function(){
+            expect(IBAN.isValidBBAN('BE', '1539-0075470-34')).to.be.false;
+        });
+
+        it('should detect invalid BBAN format', function(){
+            expect(IBAN.isValidBBAN('BE', 'ABC-0075470-34')).to.be.false;
+        });
     });
 });
