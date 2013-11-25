@@ -17,7 +17,7 @@ IBAN.isValid('BE68539007547034'); // true
 ### In the browser
 
 ```html
-<script src="iban.js">
+<script src="iban.js"></script>
 <script>
     // the API is now accessible from the window.IBAN global object
     IBAN.isValid('hello world'); // false
