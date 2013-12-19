@@ -1,6 +1,9 @@
 # iban.js
 
 IBAN and BBAN validation, formatting and conversion in javascript.
+Check the demo on [our website] to try it.
+
+[our website]: http://www.arhs-group.com/labs/iban-bban-converter/
 
 ## Usage
 
