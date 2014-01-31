@@ -1,0 +1,14 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Plain old tests</title>
+    <script src="../iban.js"></script>
+</head>
+<body>
+    <pre></pre>
+    <script>
+        var pre = document.getElementsByTagName('pre')[0];
+        pre.innerHTML += "Correctly detect invalid IBAN: " + (IBAN.isValid('hello world') == false) + "\n";
+        pre.innerHTML += "Correctly detect valid IBAN: " + (IBAN.isValid('BE68539007547034') == true) + "\n";
+    </script>
+</body>
