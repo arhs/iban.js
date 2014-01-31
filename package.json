@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "repository": "",
+  "repository": "https://github.com/arhs/iban.js",
   "author": "Laurent VB",
-  "license": ""
+  "license": "MIT"
 }
