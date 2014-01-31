@@ -1,5 +1,36 @@
 (function(exports){
 
+    // Array.prototype.map polyfill
+    // code from https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map
+    if (!Array.prototype.map){
+        Array.prototype.map = function(fun /*, thisArg */){
+            "use strict";
+
+            if (this === void 0 || this === null)
+                throw new TypeError();
+
+            var t = Object(this);
+            var len = t.length >>> 0;
+            if (typeof fun !== "function")
+                throw new TypeError();
+
+            var res = new Array(len);
+            var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+            for (var i = 0; i < len; i++)
+            {
+                // NOTE: Absolute correctness would demand Object.defineProperty
+                //       be used.  But this method is fairly new, and failure is
+                //       possible only if Object.prototype or Array.prototype
+                //       has a property |i| (very unlikely), so use a less-correct
+                //       but more portable alternative.
+                if (i in t)
+                    res[i] = fun.call(thisArg, t[i], i, t);
+            }
+
+            return res;
+        };
+    }
+
     var A = 'A'.charCodeAt(0),
         Z = 'Z'.charCodeAt(0);
 
@@ -58,7 +89,7 @@
 
             // parse each structure block (1-char + 2-digits)
             var format,
-                pattern = block[0],
+                pattern = block.slice(0, 1),
                 repeats = parseInt(block.slice(1), 10);
 
             switch (pattern){
@@ -92,16 +123,14 @@
         this.length = length;
         this.structure = structure;
         this.example = example;
-
-        /**
-         * Lazy-loaded regex (parse the structure and construct the regular expression the first time we need it for validation)
-         */
-        Object.defineProperty(this, 'regex', {
-            get: function() {
-                return this._regex || (this._regex = parseStructure(this.structure))
-            }
-        });
     }
+
+    /**
+     * Lazy-loaded regex (parse the structure and construct the regular expression the first time we need it for validation)
+     */
+    Specification.prototype._regex = function(){
+        return this._cachedRegex || (this._cachedRegex = parseStructure(this.structure))
+    };
 
     /**
      * Check if the passed iban is valid according to this specification.
@@ -112,7 +141,7 @@
     Specification.prototype.isValid = function(iban){
         return this.length == iban.length
             && this.countryCode === iban.slice(0,2)
-            && this.regex.test(iban.slice(4))
+            && this._regex().test(iban.slice(4))
             && iso7064Mod97_10(iso13616Prepare(iban)) == 1;
     };
 
@@ -124,7 +153,7 @@
      * @returns {string} the BBAN
      */
     Specification.prototype.toBBAN = function(iban, separator) {
-        return this.regex.exec(iban.slice(4)).slice(1).join(separator);
+        return this._regex().exec(iban.slice(4)).slice(1).join(separator);
     };
 
     /**
@@ -156,7 +185,7 @@
      */
     Specification.prototype.isValidBBAN = function(bban) {
         return this.length - 4 == bban.length
-            && this.regex.test(bban);
+            && this._regex().test(bban);
     };
 
     var countries = {};
