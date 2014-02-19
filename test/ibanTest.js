@@ -8,6 +8,13 @@ describe('IBAN', function(){
 
     describe('.isValid', function(){
 
+        it('should return false when input is not a String', function(){
+            expect(IBAN.isValid(1)).to.be.false;
+            expect(IBAN.isValid([])).to.be.false;
+            expect(IBAN.isValid({})).to.be.false;
+            expect(IBAN.isValid(true)).to.be.false;
+        });
+
         it('should return false for an unknown country code digit', function(){
             expect(IBAN.isValid('ZZ68539007547034')).to.be.false;
         });
@@ -86,6 +93,13 @@ describe('IBAN', function(){
     });
 
     describe('.isValidBBAN', function(){
+
+        it('should return false when input is not a String', function(){
+            expect(IBAN.isValidBBAN('BE', 1)).to.be.false;
+            expect(IBAN.isValidBBAN('BE', {})).to.be.false;
+            expect(IBAN.isValidBBAN('BE', [])).to.be.false;
+            expect(IBAN.isValidBBAN('BE', true)).to.be.false;
+        });
 
         it('should validate a correct Belgian BBAN', function(){
             expect(IBAN.isValidBBAN('BE', '539007547034')).to.be.true;
