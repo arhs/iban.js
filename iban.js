@@ -261,12 +261,25 @@
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
 
     /**
+     * Utility function to check if a variable is a String.
+     *
+     * @param v
+     * @returns {boolean} true if the passed variable is a String, false otherwise.
+     */
+    function isString(v){
+        return (typeof v == 'string' || v instanceof String);
+    }
+
+    /**
      * Check if an IBAN is valid.
      *
      * @param {String} iban the IBAN to validate.
      * @returns {boolean} true if the passed IBAN is valid, false otherwise
      */
     exports.isValid = function(iban){
+        if (!isString(iban)){
+            return false;
+        }
         iban = this.electronicFormat(iban);
         var countryStructure = countries[iban.slice(0,2)];
         return !!countryStructure && countryStructure.isValid(iban);
@@ -315,6 +328,9 @@
      * @param bban the BBAN to check the validity of
      */
     exports.isValidBBAN = function(countryCode, bban){
+        if (!isString(bban)){
+            return false;
+        }
         var countryStructure = countries[countryCode];
         return countryStructure && countryStructure.isValidBBAN(this.electronicFormat(bban));
     };
