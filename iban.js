@@ -194,6 +194,7 @@
         countries[IBAN.countryCode] = IBAN;
     }
 
+    addSpecification(new Specification("AD", 24, "F04F04A12",          "AD1200012030200359100100"));
     addSpecification(new Specification("AE", 23, "F03F16",             "AE070331234567890123456"));
     addSpecification(new Specification("AL", 28, "F08A16",             "AL47212110090000000235698741"));
     addSpecification(new Specification("AT", 20, "F05F11",             "AT611904300234573201"));
@@ -202,6 +203,7 @@
     addSpecification(new Specification("BE", 16, "F03F07F02",          "BE68539007547034"));
     addSpecification(new Specification("BG", 22, "U04F04F02A08",       "BG80BNBG96611020345678"));
     addSpecification(new Specification("BH", 22, "U04A14",             "BH67BMAG00001299123456"));
+    addSpecification(new Specification("BR", 29, "F08F05F10U01A01",    "BR9700360305000010009795493P1"));
     addSpecification(new Specification("CH", 21, "F05A12",             "CH9300762011623852957"));
     addSpecification(new Specification("CR", 21, "F03F14",             "CR0515202001026284066"));
     addSpecification(new Specification("CY", 28, "F03F05A16",          "CY17002001280000001200527600"));
