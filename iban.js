@@ -259,6 +259,39 @@
     addSpecification(new Specification("TR", 26, "F05A01A16",          "TR330006100519786457841326"));
     addSpecification(new Specification("VG", 24, "U04F16",             "VG96VPVG0000012345678901"));
 
+    // Angola
+    addSpecification(new Specification("AO", 25, "F21",                "AO69123456789012345678901"));
+    // Burkina
+    addSpecification(new Specification("BF", 27, "F23",                "BF2312345678901234567890123"));
+    // Burundi
+    addSpecification(new Specification("BI", 16, "F12",                "BI41123456789012"));
+    // Benin
+    addSpecification(new Specification("BJ", 28, "F24",                "BJ39123456789012345678901234"));
+    // Ivory
+    addSpecification(new Specification("CI", 28, "U01F23",             "CI17A12345678901234567890123"));
+    // Cameron
+    addSpecification(new Specification("CM", 27, "F23",                "CM9012345678901234567890123"));
+    // Cape Verde
+    addSpecification(new Specification("CV", 25, "F21",                "CV30123456789012345678901"));
+    // Algeria
+    addSpecification(new Specification("DZ", 24, "F20",                "DZ8612345678901234567890"));
+    // Iran
+    addSpecification(new Specification("IR", 26, "F22",                "IR861234568790123456789012"));
+    // Jordan
+    addSpecification(new Specification("JO", 30, "A04F22",             "JO15AAAA1234567890123456789012"));
+    // Madagascar
+    addSpecification(new Specification("MG", 27, "F23",                "MG1812345678901234567890123"));
+    // Mali
+    addSpecification(new Specification("ML", 28, "U01F23",             "ML15A12345678901234567890123"));
+    // Mozambique
+    addSpecification(new Specification("MZ", 25, "F21",                "MZ25123456789012345678901"));
+    // Quatar
+    addSpecification(new Specification("QA", 29, "U04A21",             "QA30AAAA123456789012345678901"));
+    // Senegal
+    addSpecification(new Specification("SN", 28, "U01F23",             "SN52A12345678901234567890123"));
+    // Ukraine
+    addSpecification(new Specification("UA", 29, "F25",                "UA511234567890123456789012345"));
+
     var NON_ALPHANUM = /[^a-zA-Z0-9]/g,
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
 
