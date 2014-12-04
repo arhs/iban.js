@@ -23,6 +23,10 @@ describe('IBAN', function(){
             expect(IBAN.isValid('BE68539007547034')).to.be.true;
         });
 
+        it('should return true for a valid Dutch IBAN', function(){
+            expect(IBAN.isValid('NL86INGB0002445588')).to.be.true;
+        });
+
         it('should return false for an incorrect check digit', function(){
             expect(IBAN.isValid('BE68539007547035')).to.be.false;
         });
@@ -103,6 +107,10 @@ describe('IBAN', function(){
 
         it('should validate a correct Belgian BBAN', function(){
             expect(IBAN.isValidBBAN('BE', '539007547034')).to.be.true;
+        });
+
+        it('should return true for a valid Dutch IBAN', function(){
+            expect(IBAN.isValidBBAN('NL', 'INGB0002445588')).to.be.true;
         });
 
         it('should validate a correct Belgian BBAN, ignoring format', function(){
