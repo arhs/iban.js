@@ -28,6 +28,14 @@ IBAN.isValid('BE68539007547034'); // true
 </script>
 ```
 
+### With TypeScript
+The library is also available from the typescript language. To do this, [download the definition](https://github.com/borisyankov/DefinitelyTyped/tree/master/iban) and add a reference to this:
+```typescript
+/// <reference path="iban.d.ts" />
+IBAN.isValid('hello world');
+IBAN.isValid('BE68539007547034');
+```
+
 ## API
 
     * isValid(iban)
