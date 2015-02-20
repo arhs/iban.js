@@ -35,6 +35,9 @@ The library is also available from the typescript language. To do this, [downloa
 IBAN.isValid('hello world');
 IBAN.isValid('BE68539007547034');
 ```
+### With Meteor framework
+A wrapper package for the Meteor framework is available [here](https://atmospherejs.com/theduke/iban).
+
 
 ## API
 
