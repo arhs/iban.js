@@ -1,4 +1,15 @@
-(function(exports){
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports'], factory);
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports);
+    } else {
+        // Browser globals
+        factory(root.IBAN = {});
+    }
+}(this, function(exports){
 
     // Array.prototype.map polyfill
     // code from https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map
@@ -397,4 +408,4 @@
      */
     exports.countries = countries;
 
-})(typeof exports == 'undefined' ? this.IBAN = {} : exports);
+}));

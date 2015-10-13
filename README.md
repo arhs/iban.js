@@ -7,7 +7,7 @@ Check the demo on [our website] to try it.
 
 ## Usage
 
-IBAN.js can be used as a node.js module and in the browser.
+IBAN.js is compatible with both commonjs and AMD module definition. It can be used as a [node.js module](#in-nodejs) and [in the browser](#in-the-browser). It also has a bower manifest, a [Typescript definition](#with-typescript) and a [Meteor wrapper](#with-meteor-framework).
 
 ### In node.js
 
@@ -18,6 +18,8 @@ IBAN.isValid('BE68539007547034'); // true
 ```
 
 ### In the browser
+
+Using a module loader (AMD or commonjs) or directly through the global ```IBAN``` object:
 
 ```html
 <script src="iban.js"></script>
