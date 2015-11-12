@@ -124,7 +124,7 @@
      *
      * @param countryCode the code of the country
      * @param length the length of the IBAN
-     * @param structure the structure of the undernying BBAN (for validation and formatting)
+     * @param structure the structure of the underlying BBAN (for validation and formatting)
      * @param example an example valid IBAN
      * @constructor
      */
@@ -242,6 +242,7 @@
     addSpecification(new Specification("KW", 30, "U04A22",             "KW81CBKU0000000000001234560101"));
     addSpecification(new Specification("KZ", 20, "F03A13",             "KZ86125KZT5004100100"));
     addSpecification(new Specification("LB", 28, "F04A20",             "LB62099900000001001901229114"));
+    addSpecification(new Specification("LC", 32, "U04F24",             "LC55HEMM000100010012001200013015"));
     addSpecification(new Specification("LI", 21, "F05A12",             "LI21088100002324013AA"));
     addSpecification(new Specification("LT", 20, "F05F11",             "LT121000011101001000"));
     addSpecification(new Specification("LU", 20, "F03A13",             "LU280019400644750000"));
@@ -266,9 +267,12 @@
     addSpecification(new Specification("SI", 19, "F05F08F02",          "SI56263300012039086"));
     addSpecification(new Specification("SK", 24, "F04F06F10",          "SK3112000000198742637541"));
     addSpecification(new Specification("SM", 27, "U01F05F05A12",       "SM86U0322509800000000270100"));
+    addSpecification(new Specification("ST", 25, "F08F11F02",          "ST68000100010051845310112"));
+    addSpecification(new Specification("TL", 23, "F03F14F02",          "TL380080012345678910157"));
     addSpecification(new Specification("TN", 24, "F02F03F13F02",       "TN5910006035183598478831"));
-    addSpecification(new Specification("TR", 26, "F05A01A16",          "TR330006100519786457841326"));
+    addSpecification(new Specification("TR", 26, "F05F01A16",          "TR330006100519786457841326"));
     addSpecification(new Specification("VG", 24, "U04F16",             "VG96VPVG0000012345678901"));
+    addSpecification(new Specification("XK", 20, "F04F10F02",          "XK051212012345678906"));
 
     // Angola
     addSpecification(new Specification("AO", 25, "F21",                "AO69123456789012345678901"));
