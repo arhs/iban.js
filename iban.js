@@ -242,7 +242,7 @@
     addSpecification(new Specification("KW", 30, "U04A22",             "KW81CBKU0000000000001234560101"));
     addSpecification(new Specification("KZ", 20, "F03A13",             "KZ86125KZT5004100100"));
     addSpecification(new Specification("LB", 28, "F04A20",             "LB62099900000001001901229114"));
-    addSpecification(new Specification("LC", 32, "U04F24",             "LC55HEMM000100010012001200013015"));
+    addSpecification(new Specification("LC", 32, "U04F24",             "LC07HEMM000100010012001200013015"));
     addSpecification(new Specification("LI", 21, "F05A12",             "LI21088100002324013AA"));
     addSpecification(new Specification("LT", 20, "F05F11",             "LT121000011101001000"));
     addSpecification(new Specification("LU", 20, "F03A13",             "LU280019400644750000"));
