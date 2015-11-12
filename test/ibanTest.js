@@ -27,6 +27,10 @@ describe('IBAN', function(){
             expect(IBAN.isValid('NL86INGB0002445588')).to.be.true;
         });
 
+        it('should return true for a valid Moldovan IBAN', function(){
+            expect(IBAN.isValid('MD75EX0900002374642125EU')).to.be.true;
+        });
+
         it('should return false for an incorrect check digit', function(){
             expect(IBAN.isValid('BE68539007547035')).to.be.false;
         });

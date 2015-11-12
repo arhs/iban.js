@@ -247,7 +247,7 @@
     addSpecification(new Specification("LU", 20, "F03A13",             "LU280019400644750000"));
     addSpecification(new Specification("LV", 21, "U04A13",             "LV80BANK0000435195001"));
     addSpecification(new Specification("MC", 27, "F05F05A11F02",       "MC5811222000010123456789030"));
-    addSpecification(new Specification("MD", 24, "U02F18",             "MD24AG000225100013104168"));
+    addSpecification(new Specification("MD", 24, "U02A18",             "MD24AG000225100013104168"));
     addSpecification(new Specification("ME", 22, "F03F13F02",          "ME25505000012345678951"));
     addSpecification(new Specification("MK", 19, "F03A10F02",          "MK07250120000058984"));
     addSpecification(new Specification("MR", 27, "F05F05F11F02",       "MR1300020001010000123456753"));
