@@ -216,7 +216,7 @@
     addSpecification(new Specification("BH", 22, "U04A14",             "BH67BMAG00001299123456"));
     addSpecification(new Specification("BR", 29, "F08F05F10U01A01",    "BR9700360305000010009795493P1"));
     addSpecification(new Specification("CH", 21, "F05A12",             "CH9300762011623852957"));
-    addSpecification(new Specification("CR", 21, "F03F14",             "CR0515202001026284066"));
+    addSpecification(new Specification("CR", 22, "F04F14",             "CR72012300000171549015"));
     addSpecification(new Specification("CY", 28, "F03F05A16",          "CY17002001280000001200527600"));
     addSpecification(new Specification("CZ", 24, "F04F06F10",          "CZ6508000000192000145399"));
     addSpecification(new Specification("DE", 22, "F08F10",             "DE89370400440532013000"));
