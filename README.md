@@ -5,6 +5,8 @@ Check the demo on [our website] to try it.
 
 [our website]: http://www.arhs-group.com/labs/iban-bban-converter/
 
+IBAN.js follows the [ISO 13616 IBAN Registry technical specification](https://www.swift.com/standards/data-standards/iban).
+
 ## Usage
 
 IBAN.js is compatible with both commonjs and AMD module definition. It can be used as a [node.js module](#in-nodejs) and [in the browser](#in-the-browser). It also has a bower manifest, a [Typescript definition](#with-typescript) and a [Meteor wrapper](#with-meteor-framework).
