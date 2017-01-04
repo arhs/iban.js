@@ -257,7 +257,7 @@
     addSpecification(new Specification("NL", 18, "U04F10",             "NL91ABNA0417164300"));
     addSpecification(new Specification("NO", 15, "F04F06F01",          "NO9386011117947"));
     addSpecification(new Specification("PK", 24, "U04A16",             "PK36SCBL0000001123456702"));
-    addSpecification(new Specification("PL", 28, "F08F16",             "PL61109010140000071219812874"));
+    addSpecification(new Specification("PL", 28, "F02F08F16",          "PL61109010140000071219812874"));
     addSpecification(new Specification("PS", 29, "U04A21",             "PS92PALS000000000400123456702"));
     addSpecification(new Specification("PT", 25, "F04F04F11F02",       "PT50000201231234567890154"));
     addSpecification(new Specification("RO", 24, "U04A16",             "RO49AAAA1B31007593840000"));
