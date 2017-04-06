@@ -120,6 +120,16 @@
     }
 
     /**
+     *
+     * @param iban
+     * @returns {string}
+     */
+    function electronicFormat(iban){
+        return iban.replace(NON_ALPHANUM, '').toUpperCase();
+    }
+
+
+    /**
      * Create a new Specification for a valid IBAN number.
      *
      * @param countryCode the code of the country
@@ -216,7 +226,7 @@
     addSpecification(new Specification("BH", 22, "U04A14",             "BH67BMAG00001299123456"));
     addSpecification(new Specification("BR", 29, "F08F05F10U01A01",    "BR9700360305000010009795493P1"));
     addSpecification(new Specification("CH", 21, "F05A12",             "CH9300762011623852957"));
-    addSpecification(new Specification("CR", 21, "F03F14",             "CR0515202001026284066"));
+    addSpecification(new Specification("CR", 22, "F04F14",             "CR72012300000171549015"));
     addSpecification(new Specification("CY", 28, "F03F05A16",          "CY17002001280000001200527600"));
     addSpecification(new Specification("CZ", 24, "F04F06F10",          "CZ6508000000192000145399"));
     addSpecification(new Specification("DE", 22, "F08F10",             "DE89370400440532013000"));
@@ -330,7 +340,7 @@
         if (!isString(iban)){
             return false;
         }
-        iban = this.electronicFormat(iban);
+        iban = electronicFormat(iban);
         var countryStructure = countries[iban.slice(0,2)];
         return !!countryStructure && countryStructure.isValid(iban);
     };
@@ -346,7 +356,7 @@
         if (typeof separator == 'undefined'){
             separator = ' ';
         }
-        iban = this.electronicFormat(iban);
+        iban = electronicFormat(iban);
         var countryStructure = countries[iban.slice(0,2)];
         if (!countryStructure) {
             throw new Error('No country with code ' + iban.slice(0,2));
@@ -368,7 +378,7 @@
         if (!countryStructure) {
             throw new Error('No country with code ' + countryCode);
         }
-        return countryStructure.fromBBAN(this.electronicFormat(bban));
+        return countryStructure.fromBBAN(electronicFormat(bban));
     };
 
     /**
@@ -382,7 +392,7 @@
             return false;
         }
         var countryStructure = countries[countryCode];
-        return countryStructure && countryStructure.isValidBBAN(this.electronicFormat(bban));
+        return countryStructure && countryStructure.isValidBBAN(electronicFormat(bban));
     };
 
     /**
@@ -395,18 +405,10 @@
         if (typeof separator == 'undefined'){
             separator = ' ';
         }
-        return this.electronicFormat(iban).replace(EVERY_FOUR_CHARS, "$1" + separator);
+        return electronicFormat(iban).replace(EVERY_FOUR_CHARS, "$1" + separator);
     };
 
-    /**
-     *
-     * @param iban
-     * @returns {string}
-     */
-    exports.electronicFormat = function(iban){
-        return iban.replace(NON_ALPHANUM, '').toUpperCase();
-    };
-
+    exports.electronicFormat = electronicFormat;
     /**
      * An object containing all the known IBAN specifications.
      */
