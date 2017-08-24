@@ -1,3 +1,7 @@
+[![npm version](https://badge.fury.io/js/iban.svg)](https://badge.fury.io/js/iban)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/arhs/iban.js/master/LICENSE)
+
+
 # iban.js
 
 IBAN and BBAN validation, formatting and conversion in javascript.
