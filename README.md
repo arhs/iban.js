@@ -4,7 +4,7 @@
 
 # iban.js
 
-IBAN and BBAN validation, formatting and conversion in javascript.
+IBAN and BBAN validation, formatting and conversion in Javascript.
 Check the demo on [demo page] to try it.
 
 [demo page]: https://arhs.github.io/iban.js/
