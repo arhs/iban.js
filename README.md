@@ -37,7 +37,7 @@ Using a module loader (AMD or commonjs) or directly through the global ```IBAN``
 ```
 
 ### With TypeScript
-The library is also available from the typescript language. To do this, [download the definition](https://github.com/borisyankov/DefinitelyTyped/tree/master/iban) and add a reference to this:
+The library is also available from the typescript language. To do this, [download the definition](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/iban) and add a reference to this:
 ```typescript
 /// <reference path="iban.d.ts" />
 IBAN.isValid('hello world');
