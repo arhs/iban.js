@@ -316,6 +316,8 @@
     addSpecification(new Specification("SN", 28, "U01F23",             "SN52A12345678901234567890123"));
     // Ukraine
     addSpecification(new Specification("UA", 29, "F25",                "UA511234567890123456789012345"));
+    // Seychelles
+    addSpecification(new Specification("SC", 31, "U04F04F16U03",       "SC18SSCB11010000000000001497USD"));
 
     var NON_ALPHANUM = /[^a-zA-Z0-9]/g,
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
