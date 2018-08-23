@@ -303,7 +303,7 @@
     // Benin
     addSpecification(new Specification("BJ", 28, "F24",                "BJ39123456789012345678901234"));
     // Ivory
-    addSpecification(new Specification("CI", 28, "U01F23",             "CI17A12345678901234567890123"));
+    addSpecification(new Specification("CI", 28, "U02F22",             "CI70CI1234567890123456789012"));
     // Cameron
     addSpecification(new Specification("CM", 27, "F23",                "CM9012345678901234567890123"));
     // Cape Verde
