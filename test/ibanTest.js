@@ -34,9 +34,13 @@ describe('IBAN', function(){
         it('should return true for a valid Saint-Lucia IBAN', function(){
             expect(IBAN.isValid('LC55HEMM000100010012001200023015')).to.be.true;
         });
-
+        
         it('should return false for an incorrect check digit', function(){
             expect(IBAN.isValid('BE68539007547035')).to.be.false;
+        });
+        
+        it('should return true for a valid Côte d\'Ivoire IBAN', function(){
+            expect(IBAN.isValid('CI93CI0080111301134291200589')).to.be.true;
         });
 
         it('should return true for all examples', function(){
