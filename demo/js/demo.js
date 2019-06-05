@@ -51,7 +51,7 @@ $(document).ready(function(){
   $('#userInput').focus();
 
   function onChange() {
-    const val = $('#userInput').val();
+    const val = $('#userInput').val().toUpperCase();;
     if (ibanDemo.couldBeIBAN(val)) {
       $('#country').hide();
       $('#countryLb').hide();
@@ -66,7 +66,7 @@ $(document).ready(function(){
   $('#goBtn').click(function() {
       $('#results').hide();
 
-      const val = $('#userInput').val();
+      const val = $('#userInput').val().toUpperCase();;
       if (ibanDemo.couldBeIBAN(val)) {
         onIBAN(val);
       }
