@@ -87,7 +87,7 @@
 
     /**
      * @typedef {Object[]} StructureBlocks
-     * @property {string} format
+     * @property {string} pattern
      * @property {number} repeats
      */
 
@@ -105,21 +105,21 @@
         return structure.match(/(.{3})/g).map(function(block){
 
             // parse each structure block (1-char + 2-digits)
-            var format,
-                pattern = block.slice(0, 1),
+            var pattern,
+                patternGroup = block.slice(0, 1),
                 repeats = parseInt(block.slice(1), 10);
 
-            switch (pattern){
-                case "A": format = "0-9A-Za-z"; break;
-                case "B": format = "0-9A-Z"; break;
-                case "C": format = "A-Za-z"; break;
-                case "F": format = "0-9"; break;
-                case "L": format = "a-z"; break;
-                case "U": format = "A-Z"; break;
-                case "W": format = "0-9a-z"; break;
+            switch (patternGroup){
+                case "A": pattern = "[0-9A-Za-z]"; break;
+                case "B": pattern = "[0-9A-Z]"; break;
+                case "C": pattern = "[A-Za-z]"; break;
+                case "F": pattern = "[0-9]"; break;
+                case "L": pattern = "[a-z]"; break;
+                case "U": pattern = "[A-Z]"; break;
+                case "W": pattern = "[0-9a-z]"; break;
             }
 
-            return {format, repeats};
+            return {pattern, repeats};
         });
     }
 
@@ -129,7 +129,7 @@
      */
     function parseBlocksToRegex(structureBlocks){
         var regex = structureBlocks.map(function(block){
-            return '([' + block.format + ']{' + block.repeats + '})';
+            return '(' + block.pattern + '{' + block.repeats + '})';
         });
 
         return new RegExp('^' + regex.join('') + '$');
