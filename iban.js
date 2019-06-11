@@ -85,18 +85,9 @@
         return parseInt(remainder, 10) % 97;
     }
 
-    /**
-     * Parse the BBAN structure used to configure each IBAN Specification and returns a matching regular expression.
-     * A structure is composed of blocks of 3 characters (one letter and 2 digits). Each block represents
-     * a logical group in the typical representation of the BBAN. For each group, the letter indicates which characters
-     * are allowed in this group and the following 2-digits number tells the length of the group.
-     *
-     * @param {string} structure the structure to parse
-     * @returns {RegExp}
-     */
-    function parseStructure(structure){
+    function parseStructureToBlocks(structure){
         // split in blocks of 3 chars
-        var regex = structure.match(/(.{3})/g).map(function(block){
+        return structure.match(/(.{3})/g).map(function(block){
 
             // parse each structure block (1-char + 2-digits)
             var format,
@@ -113,7 +104,22 @@
                 case "W": format = "0-9a-z"; break;
             }
 
-            return '([' + format + ']{' + repeats + '})';
+            return {format, repeats};
+        });
+    }
+
+    /**
+     * Parse the BBAN structure used to configure each IBAN Specification and returns a matching regular expression.
+     * A structure is composed of blocks of 3 characters (one letter and 2 digits). Each block represents
+     * a logical group in the typical representation of the BBAN. For each group, the letter indicates which characters
+     * are allowed in this group and the following 2-digits number tells the length of the group.
+     *
+     * @param {string} structureBlocks the structureBlocks parsed from structure
+     * @returns {RegExp}
+     */
+    function parseBlocksToRegex(structureBlocks){
+        var regex = structureBlocks.map(function(block){
+            return '([' + block.format + ']{' + block.repeats + '})';
         });
 
         return new RegExp('^' + regex.join('') + '$');
@@ -147,10 +153,17 @@
     }
 
     /**
+     * Lazy-loaded structureBlocks (parse the structure to blocks)
+     */
+    Specification.prototype.structureBlocks = function(){
+        return this._cachedStructureBlocks || (this._cachedStructureBlocks = parseStructureToBlocks(this.structure))
+    };
+
+    /**
      * Lazy-loaded regex (parse the structure and construct the regular expression the first time we need it for validation)
      */
     Specification.prototype._regex = function(){
-        return this._cachedRegex || (this._cachedRegex = parseStructure(this.structure))
+        return this._cachedRegex || (this._cachedRegex = parseBlocksToRegex(this.structureBlocks()))
     };
 
     /**
