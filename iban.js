@@ -85,6 +85,21 @@
         return parseInt(remainder, 10) % 97;
     }
 
+    /**
+     * @typedef {Object[]} StructureBlocks
+     * @property {string} format
+     * @property {number} repeats
+     */
+
+    /**
+     * Parse the BBAN structure used to configure each IBAN Specification and returns an array of structure blocks.
+     * A structure is composed of blocks of 3 characters (one letter and 2 digits). Each block represents
+     * a logical group in the typical representation of the BBAN. For each group, the letter indicates which characters
+     * are allowed in this group and the following 2-digits number tells the length of the group.
+     *
+     * @param {string} structure the structure to parse
+     * @returns {StructureBlocks}
+     */
     function parseStructureToBlocks(structure){
         // split in blocks of 3 chars
         return structure.match(/(.{3})/g).map(function(block){
@@ -109,12 +124,7 @@
     }
 
     /**
-     * Parse the BBAN structure used to configure each IBAN Specification and returns a matching regular expression.
-     * A structure is composed of blocks of 3 characters (one letter and 2 digits). Each block represents
-     * a logical group in the typical representation of the BBAN. For each group, the letter indicates which characters
-     * are allowed in this group and the following 2-digits number tells the length of the group.
-     *
-     * @param {string} structureBlocks the structureBlocks parsed from structure
+     * @param {StructureBlocks} structureBlocks the structureBlocks parsed from structure
      * @returns {RegExp}
      */
     function parseBlocksToRegex(structureBlocks){
