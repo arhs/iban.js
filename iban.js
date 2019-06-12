@@ -119,7 +119,7 @@
                 case "W": pattern = "[0-9a-z]"; break;
             }
 
-            return {pattern, repeats};
+            return {pattern: pattern, repeats: repeats};
         });
     }
 
