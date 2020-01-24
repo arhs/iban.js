@@ -234,6 +234,7 @@
     addSpecification(new Specification("DK", 18, "F04F09F01",          "DK5000400440116243"));
     addSpecification(new Specification("DO", 28, "U04F20",             "DO28BAGR00000001212453611324"));
     addSpecification(new Specification("EE", 20, "F02F02F11F01",       "EE382200221020145685"));
+    addSpecification(new Specification("EG", 29, "F04F04F17",          "EG800002000156789012345180002"));
     addSpecification(new Specification("ES", 24, "F04F04F01F01F10",    "ES9121000418450200051332"));
     addSpecification(new Specification("FI", 18, "F06F07F01",          "FI2112345600000785"));
     addSpecification(new Specification("FO", 18, "F04F09F01",          "FO6264600001631634"));
