@@ -56,6 +56,10 @@ describe('IBAN', function(){
                 expect(IBAN.isValid(num)).to.be.false;
             });
         });
+
+        it('should return true for a valid Egypt IBAN', function(){
+            expect(IBAN.isValid('EG800002000156789012345180002')).to.be.true;
+        });
     });
 
     describe('.electronicFormat', function(){
