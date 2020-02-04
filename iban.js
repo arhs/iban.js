@@ -323,6 +323,20 @@
     // Senegal
     addSpecification(new Specification("SN", 28, "U01F23",             "SN52A12345678901234567890123"));
 
+    // The following are regional and administrative French Republic subdivision IBAN specification (same structure as FR, only country code vary)
+    addSpecification(new Specification("GF", 27, "F05F05A11F02",       "GF121234512345123456789AB13"));
+    addSpecification(new Specification("GP", 27, "F05F05A11F02",       "GP791234512345123456789AB13"));
+    addSpecification(new Specification("MQ", 27, "F05F05A11F02",       "MQ221234512345123456789AB13"));
+    addSpecification(new Specification("RE", 27, "F05F05A11F02",       "RE131234512345123456789AB13"));
+    addSpecification(new Specification("PF", 27, "F05F05A11F02",       "PF281234512345123456789AB13"));
+    addSpecification(new Specification("TF", 27, "F05F05A11F02",       "TF891234512345123456789AB13"));
+    addSpecification(new Specification("YT", 27, "F05F05A11F02",       "YT021234512345123456789AB13"));
+    addSpecification(new Specification("NC", 27, "F05F05A11F02",       "NC551234512345123456789AB13"));
+    addSpecification(new Specification("BL", 27, "F05F05A11F02",       "BL391234512345123456789AB13"));
+    addSpecification(new Specification("MF", 27, "F05F05A11F02",       "MF551234512345123456789AB13"));
+    addSpecification(new Specification("PM", 27, "F05F05A11F02",       "PM071234512345123456789AB13"));
+    addSpecification(new Specification("WF", 27, "F05F05A11F02",       "WF621234512345123456789AB13"));
+
     var NON_ALPHANUM = /[^a-zA-Z0-9]/g,
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
 
