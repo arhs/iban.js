@@ -1,112 +1,91 @@
-<!DOCTYPE html>
-
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Validates and converts your IBAN to BBAN and BBAN to IBAN">
-    <meta name="author" content="ARHS Spikeseed">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    
+    <script src="https://unpkg.com/iban/iban.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>IBAN.js demo</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .container {
+        max-width: 960px;
+      }
+      .form-group:not(:last-child),
+      .form-group:last-child {
+        margin-bottom: .8rem;
+      }
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+      .result {
+        margin-top: 0.8rem;
+        padding: 0.8rem;
+        border: solid 1px;
+      }
 
-    <!-- Custom styles for this template -->
-    <link href="./css/jumbotron-narrow.css" rel="stylesheet">
+      .valid {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+      }
 
-    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
-
-    <script src="./bower_components/chai/chai.js"></script>
-    <script src="./bower_components/iban/iban.js"></script>
-
-    <script src="./js/countries.js"></script>
-    <script src="./js/demo.js"></script>
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      .invalid {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+      }
+    </style>
   </head>
-
-  <body data-feedly-mini="yes">
-
+  <body>
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="https://github.com/arhs/iban.js/">GitHub</a></li>
-            <li role="presentation"><a href="https://www.arhs-group.com">About us</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">iban.js</h3>
-      </div>
+      <header class="navbar mt-2">
+        <section class="navbar-section">
+          <span class="navbar-brand">IBAN.js demo</span>
+        </section>
+        <section class="navbar-section">
+          <a class="btn btn-link" href="https://github.com/arhs/iban/">GitHub</a>
+          <a class="btn btn-link" href="https://www.arhs-group.com">About Arhs</a>
+        </section>
+      </header>
+      <div id="demo" class="empty mt-2">
+        <h1>IBAN/BBAN converter</h1>
 
-      <div class="jumbotron">
-        <h2>BBAN / IBAN Converter</h2>
-        <div class="form-group">
-          <label class="sr-only" for="userInput">BBAN or IBAN</label>
-          <input type="text" class="form-control input-lg" id="userInput" placeholder="Enter your BBAN or IBAN here">
+        <div class="empty-action col-6 col-sm-12 col-mx-auto">
+
+          <div class="form-group">
+            <input 
+              type="text" 
+              class="form-input" 
+              placeholder="Enter your BBAN or IBAN here" 
+              pattern="[a-zA-Z0-9 _-]{2,}"
+              v-model.trim="input" 
+              v-on:keyDown="resetIsValid">
+          </div>
+          
+          <div v-if="couldBeBBAN" class="form-group">
+            <select v-model="selectedCountry" class="form-select">
+              <option disabled value="">Please select the country for this BBAN</option>
+              <option v-for="country in countries" v-bind:value="country">
+                {{ countryNames[country] }}
+              </option>
+            </select>
+          </div>
+          
+          <button class="btn btn-primary btn-lg" v-bind:disabled="!canBeValidated" v-on:click="checkIsValid">Check validity</button>
+
+          <div v-if="isValid === true" class="result valid">
+            This {{ couldBeIBAN ? 'IBAN' : 'BBAN' }} is valid.
+            <span v-if="couldBeBBAN"><br>The corresponding IBAN is {{ fromBBAN() }}</span>
+          </div>
+          <div v-if="isValid === false" class="result invalid">
+            This {{ couldBeIBAN ? 'IBAN' : 'BBAN' }} is invalid.
+          </div>
         </div>
-        <div class="form-group">
-          <label id="countryLb" for="country">Country</label>
-          <select id="country" class="form-control input-lg" name="country">
-              <option value="AT">Austria</option>
-              <option value="Belarus">Belarus</option>
-              <option value="BE">Belgium</option>
-              <option value="BG">Bulgaria</option>
-              <option value="HR">Croatia</option>
-              <option value="CY">Cyprus</option>
-              <option value="CZ">Czech Republic</option>
-              <option value="DK">Denmark</option>
-              <option value="EE">Estonia</option>
-              <option value="FI">Finland</option>
-              <option value="FR">France</option>
-              <option value="DE">Germany</option>
-              <option value="EL">Greece</option>
-              <option value="HU">Hungary</option>
-              <option value="IS">Iceland</option>
-              <option value="IE">Ireland</option>
-              <option value="IT">Italy</option>
-              <option value="LV">Latvia</option>
-              <option value="LT">Lithuania</option>
-              <option value="LU">Luxembourg</option>
-              <option value="MT">Malta</option>
-              <option value="NL">Netherlands</option>
-              <option value="PL">Poland</option>
-              <option value="PT">Portugal</option>
-              <option value="RO">Romania</option>
-              <option value="SK">Slovakia</option>
-              <option value="SI">Slovenia</option>
-              <option value="ES">Spain</option>
-              <option value="SE">Sweden</option>
-              <option value="TR">Turkey</option>
-              <option value="UK">United Kingdom</option>
-          </select>
-        </div>
-        <p><a id="goBtn" class="btn btn-lg btn-success" role="button">Go!</a></p>
-        <span id="results"></span>
       </div>
+    </div>
 
-      <footer class="footer">
-        <p>© 2017 ARHS Spikeseed</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./index_files/ie10-viewport-bug-workaround.js"></script>
-
-
-<div id="feedly-mini" title="feedly Mini tookit"></div><span id="buffer-extension-hover-button" style="display: none; position: absolute; z-index: 8675309; width: 100px; height: 25px; background-image: url(&quot;chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@2x.png&quot;); background-size: 100px 25px; opacity: 0.9; cursor: pointer;"></span></body></html>
+    <script src="./js/demo.js"></script>
+  </body>
+</html>
