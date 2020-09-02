@@ -322,6 +322,32 @@
     addSpecification(new Specification("MZ", 25, "F21",                "MZ25123456789012345678901"));
     // Senegal
     addSpecification(new Specification("SN", 28, "U01F23",             "SN52A12345678901234567890123"));
+    // Djibouti
+    addSpecification(new Specification("DJ", 27, "F23",                "DJ2110002010010409943020008"));
+    // Gabon
+    addSpecification(new Specification("GA", 27, "F23",                "GA2140021010032001890020126"));
+    // Guinea Bissau
+    addSpecification(new Specification("GW", 25, "F21",                "GW04GW1430010181800637601")); 
+    // Honduras
+    addSpecification(new Specification("HN", 28, "U4F20",              "HN54PISA00000000000000123124")); 
+    // Comoros
+    addSpecification(new Specification("KM", 27, "F23",                "KM4600005000010010904400137")); 
+    // Congo
+    addSpecification(new Specification("CG", 27, "F23",                "CG3930011000101013451300019")); 
+    // Morocco
+    addSpecification(new Specification("MA", 28, "F24",                "MA64011519000001205000534921")); 
+    // Nicaragua
+    addSpecification(new Specification("NI", 32, "U4F24",              "NI92BAMC000000000000000003123123")); 
+    // Niger
+    addSpecification(new Specification("NE", 28, "U2F22",              "NE58NE0380100100130305000268")); 
+    // Togo
+    addSpecification(new Specification("TG", 28, "U2F22",              "TG53TG0090604310346500400070")); 
+    // Chad
+    addSpecification(new Specification("TD", 27, "F23",                "TD8960002000010271091600153")); 
+    // Central African Republic
+    addSpecification(new Specification("NE", 27, "F23",                "CF4220001000010120069700160")); 
+    // Equatorial Guinea
+    addSpecification(new Specification("GQ", 27, "F23",                "GQ7050002001003715228190196")); 
 
     // The following are regional and administrative French Republic subdivision IBAN specification (same structure as FR, only country code vary)
     addSpecification(new Specification("GF", 27, "F05F05A11F02",       "GF121234512345123456789AB13"));
@@ -336,6 +362,30 @@
     addSpecification(new Specification("MF", 27, "F05F05A11F02",       "MF551234512345123456789AB13"));
     addSpecification(new Specification("PM", 27, "F05F05A11F02",       "PM071234512345123456789AB13"));
     addSpecification(new Specification("WF", 27, "F05F05A11F02",       "WF621234512345123456789AB13"));
+
+    /* TODO UK:
+        Isle of Man IM
+        Guernsey GG
+        Jersey JE
+        Channel Islands 
+    */
+
+    /*
+        TODO FI:
+        Aland islands AX
+    */
+
+    /*
+        TODO PT:
+        Azores and madeira
+    /*/
+
+    /*
+        TODO ES:
+        Canary Islands IC
+        Ceuta and Melilla EA
+    */
+
 
     var NON_ALPHANUM = /[^a-zA-Z0-9]/g,
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
