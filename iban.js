@@ -327,7 +327,7 @@
     // Gabon
     addSpecification(new Specification("GA", 27, "F23",                "GA2140021010032001890020126"));
     // Guinea Bissau
-    addSpecification(new Specification("GW", 25, "U02F19",              "GW04GW1430010181800637601"));  // wot, why are there some numbers? what's the actual structure?
+    addSpecification(new Specification("GW", 25, "U02F19",              "GW04GW1430010181800637601"));
     // Honduras
     addSpecification(new Specification("HN", 28, "U04F20",             "HN54PISA00000000000000123124")); 
     // Comoros
@@ -362,30 +362,6 @@
     addSpecification(new Specification("MF", 27, "F05F05A11F02",       "MF551234512345123456789AB13"));
     addSpecification(new Specification("PM", 27, "F05F05A11F02",       "PM071234512345123456789AB13"));
     addSpecification(new Specification("WF", 27, "F05F05A11F02",       "WF621234512345123456789AB13"));
-
-    /* TODO UK:
-        Isle of Man IM
-        Guernsey GG
-        Jersey JE
-        Channel Islands 
-    */
-
-    /*
-        TODO FI:
-        Aland islands AX
-    */
-
-    /*
-        TODO PT:
-        Azores and madeira
-    /*/
-
-    /*
-        TODO ES:
-        Canary Islands IC
-        Ceuta and Melilla EA
-    */
-
 
     var NON_ALPHANUM = /[^a-zA-Z0-9]/g,
         EVERY_FOUR_CHARS =/(.{4})(?!$)/g;
