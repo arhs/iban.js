@@ -327,9 +327,9 @@
     // Gabon
     addSpecification(new Specification("GA", 27, "F23",                "GA2140021010032001890020126"));
     // Guinea Bissau
-    addSpecification(new Specification("GW", 25, "F21",                "GW04GW1430010181800637601")); 
+    addSpecification(new Specification("GW", 25, "U02F19",              "GW04GW1430010181800637601"));  // wot, why are there some numbers? what's the actual structure?
     // Honduras
-    addSpecification(new Specification("HN", 28, "U4F20",              "HN54PISA00000000000000123124")); 
+    addSpecification(new Specification("HN", 28, "U04F20",             "HN54PISA00000000000000123124")); 
     // Comoros
     addSpecification(new Specification("KM", 27, "F23",                "KM4600005000010010904400137")); 
     // Congo
@@ -337,15 +337,15 @@
     // Morocco
     addSpecification(new Specification("MA", 28, "F24",                "MA64011519000001205000534921")); 
     // Nicaragua
-    addSpecification(new Specification("NI", 32, "U4F24",              "NI92BAMC000000000000000003123123")); 
+    addSpecification(new Specification("NI", 32, "U04F24",             "NI92BAMC000000000000000003123123")); 
     // Niger
-    addSpecification(new Specification("NE", 28, "U2F22",              "NE58NE0380100100130305000268")); 
+    addSpecification(new Specification("NE", 28, "U02F22",             "NE58NE0380100100130305000268"));  
     // Togo
-    addSpecification(new Specification("TG", 28, "U2F22",              "TG53TG0090604310346500400070")); 
+    addSpecification(new Specification("TG", 28, "U02F22",             "TG53TG0090604310346500400070")); 
     // Chad
     addSpecification(new Specification("TD", 27, "F23",                "TD8960002000010271091600153")); 
     // Central African Republic
-    addSpecification(new Specification("NE", 27, "F23",                "CF4220001000010120069700160")); 
+    addSpecification(new Specification("CF", 27, "F23",                "CF4220001000010120069700160"));
     // Equatorial Guinea
     addSpecification(new Specification("GQ", 27, "F23",                "GQ7050002001003715228190196")); 
 
