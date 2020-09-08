@@ -327,7 +327,7 @@
     // Gabon
     addSpecification(new Specification("GA", 27, "F23",                "GA2140021010032001890020126"));
     // Guinea Bissau
-    addSpecification(new Specification("GW", 25, "U02F19",              "GW04GW1430010181800637601"));
+    addSpecification(new Specification("GW", 25, "U02F19",             "GW04GW1430010181800637601"));
     // Honduras
     addSpecification(new Specification("HN", 28, "U04F20",             "HN54PISA00000000000000123124")); 
     // Comoros
