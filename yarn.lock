@@ -2253,10 +2253,10 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-chai@1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/chai/-/chai-1.8.1.tgz#cc77866d5e7ebca2bd75144b1edc370a88785f72"
-  integrity sha1-zHeGbV5+vKK9dRRLHtw3Coh4X3I=
+chai@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/chai/-/chai-1.10.0.tgz#e4031cc87654461a75943e5a35ab46eaf39c1eb9"
+  integrity sha1-5AMcyHZURhp1lD5aNatG6vOcHrk=
   dependencies:
     assertion-error "1.0.0"
     deep-eql "0.1.3"
