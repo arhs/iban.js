@@ -31,7 +31,8 @@
     "start": "rollup -c -w",
     "build": "rimraf dist/ && rollup -c",
     "postbuild": "cp dist/iban.esm.js demo/web-app/js && cp dist/iban.esm.d.ts demo/web-app/js && cp dist/iban.cjs.js demo/node/js && cp dist/iban.cjs.d.ts demo/node/js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": "https://github.com/arhs/iban.js",
   "author": "Laurent VB",
