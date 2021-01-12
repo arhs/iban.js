@@ -1,5 +1,8 @@
 [![npm version](https://badge.fury.io/js/iban.svg)](https://badge.fury.io/js/iban)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/arhs/iban.js/master/LICENSE)
+![Release](https://github.com/hy0ug0/bytes-convert/workflows/Release/badge.svg?branch=master)
+<a href="https://codeclimate.com/github/hy0ug0/iban.js/maintainability"><img src="https://api.codeclimate.com/v1/badges/9b4eafeeb3a241f111bd/maintainability" /></a>
+<a href="https://codeclimate.com/github/hy0ug0/iban.js/test_coverage"><img src="https://api.codeclimate.com/v1/badges/9b4eafeeb3a241f111bd/test_coverage" /></a>
 
 
 # iban.js
