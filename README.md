@@ -1,11 +1,11 @@
 [![npm version](https://badge.fury.io/js/iban.svg)](https://badge.fury.io/js/iban)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/arhs/iban.js/master/LICENSE)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 
 >
-> This library is not maintained anymore
+> This library is not maintained anymore. Perhaps take a look at [ibantools](https://github.com/Simplify/ibantools) as an alternative. It offers added ESM support but uses the MPL license instead of MIT.
 > 
-
-
 
 # iban.js
 
