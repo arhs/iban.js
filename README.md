@@ -16,14 +16,32 @@ Check the demo on [demo page] to try it.
 
 IBAN.js follows the [ISO 13616 IBAN Registry technical specification](https://www.swift.com/standards/data-standards/iban).
 
+## Installation
+
+IBAN.js is available from npm. You can install it using:
+
+```sh
+npm install iban
+```
+
+or you can download it from the [releases](https://github.com/arhs/iban.js/releases) page.
+
 ## Usage
 
 IBAN.js is compatible with both commonjs and AMD module definition. It can be used as a [node.js module](#in-nodejs) and [in the browser](#in-the-browser). It also has a bower manifest, a [Typescript definition](#with-typescript) and a [Meteor wrapper](#with-meteor-framework).
 
 ### In node.js
 
+With ES5:
 ```js
 var IBAN = require('iban');
+IBAN.isValid('hello world'); // false
+IBAN.isValid('BE68539007547034'); // true
+```
+
+With ES6:
+```js
+import IBAN from 'iban';
 IBAN.isValid('hello world'); // false
 IBAN.isValid('BE68539007547034'); // true
 ```
