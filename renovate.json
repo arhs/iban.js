@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "depTypeList": [
+        "devDependencies"
+      ],
+      "automerge": true
+    }
+  ],
+  "hostRules": [
+    {
+      "domainName": "github.com",
+      "encrypted": {
+        "token": "YFIcd8hVWs9BwIDF0XfLjw3qoioxJtysFwN4VDFOPdiC15n0YsVFUnjAVc14a7j1YUBC9kczmbMDxtGV7aub5g+w3KptCL3+pIfo/kYmrjTwZdoI2GuaK6b4aYMtNh2lNxmjupsM0wW3Z6bwSfpo0bd/2kg8GfnN99TTXCjerclDHgZKX5X8L9vsrOr0iMd3ESJEG7pUGnm/qQ60zEHm8tUe1jIS3LB4y007fp8l9DDC206GWHMs5IXxKwYodD+X5d13fIOerFM6cXvlzMki9n3xASrCtNvRy7jy/RaWBeK/tyhlaM1v+vDywXeSxQ5mIw1eCPEBD0FgBaBNmBbIHg=="
+      }
+    }
+  ]
+}

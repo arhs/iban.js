@@ -1,5 +1,14 @@
-# exclude tests
-test/*
-
-# exclude demo
-demo/*
+demo
+src
+tests
+.idea
+.github
+.eslintrc.js
+.gitignore
+node_modules
+prettier.config.js
+rollup.config.js
+release.config.js
+babel.config.js
+tsconfig.json
+yarn.lock
