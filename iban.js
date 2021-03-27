@@ -161,7 +161,7 @@
      */
     Specification.prototype.isValid = function(iban){
         return this.length == iban.length
-            && this.countryCode === iban.slice(0,2)
+            && this.countryCode === getIbanCountryCode(iban)
             && this._regex().test(iban.slice(4))
             && iso7064Mod97_10(iso13616Prepare(iban)) == 1;
     };
@@ -351,6 +351,18 @@
     }
 
     /**
+     * Returns IBAN's country code.
+     *
+     * @param {String} iban the IBAN.
+     * @returns {String} Country code.
+     */
+    function getIbanCountryCode(iban) {
+        return iban.slice(0,2);
+    }
+
+    exports.getIbanCountryCode = getIbanCountryCode;
+
+    /**
      * Check if an IBAN is valid.
      *
      * @param {String} iban the IBAN to validate.
@@ -361,7 +373,7 @@
             return false;
         }
         iban = electronicFormat(iban);
-        var countryStructure = countries[iban.slice(0,2)];
+        var countryStructure = countries[getIbanCountryCode(iban)];
         return !!countryStructure && countryStructure.isValid(iban);
     };
 
@@ -377,9 +389,9 @@
             separator = ' ';
         }
         iban = electronicFormat(iban);
-        var countryStructure = countries[iban.slice(0,2)];
+        var countryStructure = countries[getIbanCountryCode(iban)];
         if (!countryStructure) {
-            throw new Error('No country with code ' + iban.slice(0,2));
+            throw new Error('No country with code ' + getIbanCountryCode(iban));
         }
         return countryStructure.toBBAN(iban, separator);
     };
