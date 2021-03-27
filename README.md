@@ -60,3 +60,8 @@ A wrapper package for the Meteor framework is available [here](https://atmospher
     * isValidBBAN(countryCode, bban)
     * printFormat(iban, separator)
     * electronicFormat(iban)
+
+## Generating an IBAN
+
+You may need to generate or simulate an IBAN.
+In addition to this module you can use the [iban-constructor npm module](https://www.npmjs.com/package/iban-constructor).
