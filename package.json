@@ -21,7 +21,7 @@
     "lint-staged": "10.5.3",
     "prettier": "2.2.1",
     "rimraf": "3.0.2",
-    "rollup": "2.37.1",
+    "rollup": "2.51.2",
     "rollup-plugin-terser": "7.0.2",
     "semantic-release": "17.3.6",
     "ts-jest": "26.4.4",
