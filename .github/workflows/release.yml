@@ -1,0 +1,74 @@
+name: Release
+on:
+    push:
+        branches:
+            - master
+jobs:
+    test:
+        name: Test
+        runs-on: ubuntu-18.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+            - name: Install dependencies
+              run: yarn
+            - name: Test
+              run: yarn test
+    coverage:
+        needs: [test]
+        name: Coverage
+        runs-on: ubuntu-18.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+            - name: Install dependencies
+              run: yarn
+            - name: Test & publish code coverage
+              uses: paambaati/codeclimate-action@v2.7.5
+              env:
+                  CC_TEST_REPORTER_ID: 5c55f5af95d36efcba3e7f32481457fcba461bd90f768b460c8831ef67caf6e7
+              with:
+                  coverageCommand: yarn test:coverage
+    build:
+        name: Build
+        if: success()
+        runs-on: ubuntu-18.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+            - name: Install dependencies
+              run: yarn
+            - name: Build
+              run: yarn build
+    # release:
+    #     name: Release
+    #     if: success()
+    #     runs-on: ubuntu-18.04
+    #     steps:
+    #         - name: Checkout
+    #           uses: actions/checkout@v2
+    #         - name: Setup Node.js
+    #           uses: actions/setup-node@v2
+    #           with:
+    #               node-version: 14
+    #         - name: Install dependencies
+    #           run: yarn
+    #         - name: Build
+    #           run: yarn build
+    #         - name: Release
+    #           env:
+    #               GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
+    #               NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    #           run: yarn semantic-release

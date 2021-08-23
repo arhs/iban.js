@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <script src="https://unpkg.com/iban/iban.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>IBAN.js demo</title>
+
+    <style>
+        .container {
+            max-width: 960px;
+        }
+
+        .form-group:not(:last-child),
+        .form-group:last-child {
+            margin-bottom: .8rem;
+        }
+
+        .result {
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            border: solid 1px;
+        }
+
+        .valid {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .invalid {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="navbar mt-2">
+        <section class="navbar-section">
+            <span class="navbar-brand">IBAN.js demo</span>
+        </section>
+        <section class="navbar-section">
+            <a class="btn btn-link" href="https://github.com/arhs/iban/">GitHub</a>
+            <a class="btn btn-link" href="https://www.arhs-group.com">About Arhs</a>
+        </section>
+    </header>
+    <div id="demo" class="empty mt-2">
+        <h1>IBAN/BBAN converter</h1>
+
+        <div class="empty-action col-6 col-sm-12 col-mx-auto">
+
+            <div class="form-group">
+                <input
+                        type="text"
+                        class="form-input"
+                        placeholder="Enter your BBAN or IBAN here"
+                        pattern="[a-zA-Z0-9 _-]{2,}"
+                        v-model.trim="input"
+                        v-on:keyDown="resetIsValid">
+            </div>
+
+            <div v-if="couldBeBBAN" class="form-group">
+                <select v-model="selectedCountry" class="form-select">
+                    <option disabled value="">Please select the country for this BBAN</option>
+                    <option v-for="country in countries" v-bind:value="country">
+                        {{ countryNames[country] }}
+                    </option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary btn-lg" v-bind:disabled="!canBeValidated" v-on:click="checkIsValid">Check
+                validity
+            </button>
+
+            <div v-if="isValid === true" class="result valid">
+                This {{ couldBeIBAN ? 'IBAN' : 'BBAN' }} is valid.
+                <span v-if="couldBeBBAN"><br>The corresponding IBAN is {{ fromBBAN() }}</span>
+            </div>
+            <div v-if="isValid === false" class="result invalid">
+                This {{ couldBeIBAN ? 'IBAN' : 'BBAN' }} is invalid.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="./js/demo.js"></script>
+</body>
+</html>
