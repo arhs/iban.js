@@ -6,7 +6,7 @@
   "module": "dist/iban.esm.js",
   "browser": "dist/iban.umd.js",
   "devDependencies": {
-    "@types/jest": "26.0.20",
+    "@types/jest": "26.0.24",
     "@typescript-eslint/eslint-plugin": "4.27.0",
     "@typescript-eslint/parser": "4.27.0",
     "@wessberg/rollup-plugin-ts": "1.3.14",
